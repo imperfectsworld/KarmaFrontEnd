@@ -33,12 +33,7 @@
 
 <p>Location: <input type="text" [(ngModel)]="formItem.geoCode" /></p>
 <p> Ex: 13700 Middlebelt Rd, Livonia, MI</p>
-<button (click)="getCoordinates()">Get Lat/long</button>
-  @if(lat&&long){
-<p>Latitude:{{lat}}</p>
-<p>Longitude:{{long}}</p>
-  }
-
+ 
   <input type="file" (change)="onFileSelected($event)" class="file-input" />
 @if(selectedFile){
 <button type="button" (click)="uploadImage(selectedFile)">Upload Image</button>

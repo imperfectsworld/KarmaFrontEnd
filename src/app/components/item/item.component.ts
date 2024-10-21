@@ -20,6 +20,7 @@ export class ItemComponent {
   
   lat:number |null =null;
   long:number |null =null;
+  
   constructor(private backendService: BackendService, private socialAuthServiceConfig: SocialAuthService, private userComponent: UserComponent,private getlocationservice:GetlocationService){}
   @Input() googleUser: User = {} as User;
 
@@ -85,6 +86,16 @@ export class ItemComponent {
   }
 
   addItem(){
+    if (!this.formItem.geoCode) {
+      alert('Please enter an address.');
+      return;
+    }
+    this.getlocationservice.getLocation(this.formItem.geoCode).subscribe(response =>{
+      console.log(response);
+      this.lat = response.latitude;
+      this.long = response.longitude;
+      this.formItem.geoCode = `${this.lat},${this.long}`;
+    
     this.formItem.googleId = this.googleUser.googleId;
     this.formItem.categories = this.selectedCategory; 
     this.formItem.condition = this.selectedCondition;
@@ -94,6 +105,7 @@ export class ItemComponent {
       this.getAll();
       this.formItem = {} as Item;
     });
+  });
 }
 
 uploadImageAndAddItem() {
@@ -159,19 +171,7 @@ uploadImage(imageFile: File) {
   });
 }
 
-getCoordinates():void {
-  if (!this.formItem.geoCode) {
-    alert('Please enter an address.');
-    return;
-  }
-  this.getlocationservice.getLocation(this.formItem.geoCode).subscribe(response =>{
-    console.log(response);
-    this.lat = response.latitude;
-    this.long = response.longitude;
-    this.formItem.geoCode = `${this.lat},${this.long}`;
 
-  })
-}
 
  openLocation(geoCode: string): void {
  const googleMapsUrl = `https://www.google.com/maps/place/${geoCode}`;
