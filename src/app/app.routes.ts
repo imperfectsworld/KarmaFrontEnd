@@ -9,5 +9,6 @@ export const routes: Routes = [
     {path:"chat",component:ChatComponent},
     {path:"join-room",component:JoinRoomComponent},
     {path:"item",component:ItemComponent},
-    {path:"",redirectTo:"/user",pathMatch:"full"}
+    {path:"",redirectTo:"/user",pathMatch:"full"},
+    { path: "**", redirectTo: "/user" }
 ];
