@@ -70,6 +70,7 @@ export class ItemComponent {
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
   }
 
   signOut(): void{
@@ -100,7 +101,7 @@ uploadImageAndAddItem() {
     console.log('File selected for upload:', this.selectedFile);
 
     const formData = new FormData();
-    formData.append('image', this.selectedFile);
+    formData.append('file', this.selectedFile);
 
     const observer = {
       next: (response: any) => {
@@ -132,9 +133,9 @@ uploadImageAndAddItem() {
 
 uploadImage(imageFile: File) {
   //this.selectedFile = imageFile;
-
+  //console.log(imageFile);
   const formData = new FormData();
-  formData.append('image', imageFile);
+  formData.append('file', imageFile);
 
   this.backendService.uploadImage(formData).pipe(
     retryWhen(errors =>

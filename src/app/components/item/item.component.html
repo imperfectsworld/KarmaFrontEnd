@@ -28,9 +28,6 @@
     }
   </select>
   }
-
-  <input type="file" class="file-input" />
-  <button (click)="addItem()">Add</button>
 </p>
 
 
@@ -41,12 +38,19 @@
 <p>Latitude:{{lat}}</p>
 <p>Longitude:{{long}}</p>
   }
+
+  <input type="file" (change)="onFileSelected($event)" class="file-input" />
+@if(selectedFile){
+<button type="button" (click)="uploadImage(selectedFile)">Upload Image</button>
+}  
+<button (click)="uploadImageAndAddItem()">Add</button>
+
   
 
 <h1>Free Items</h1>
 @for(i of allItems; track i.id){
   @if(i.pic){
-  <img [src]="'https://i.imgur.com/' + i.pic" alt="Item image"/>
+  <img [src]="i.pic" alt="Item image"/>
   }
 <p>{{ i.name }}</p>
 <p>{{ i.description }}</p>

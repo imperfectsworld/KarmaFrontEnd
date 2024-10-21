@@ -29,10 +29,10 @@ export class BackendService {
   }
 
   uploadImage(formData: FormData): Observable<any> {
-    const imgurUrl = 'https://api.imgur.com/3/image';
+    //const imgurUrl = 'https://api.imgur.com/3/image';
     const clientId = this.getImgurClientId();
     
-    return this.http.post<any>(imgurUrl, formData, {
+    return this.http.post<any>(`${this.url}/api/Imgur/upload`, formData, {
       headers: {
         Authorization: `Client-ID ${clientId}`
       }
