@@ -33,6 +33,7 @@ isvalid:boolean = false;
    this.chatService.joinRoom(user,room)
    .then(() =>{
     this.isvalid = true;
+    
     this.router.navigate(['chat']);
    }).catch((e) =>{
     console.log('Error in joining the room',e);
