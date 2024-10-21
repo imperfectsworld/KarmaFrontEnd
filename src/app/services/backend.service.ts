@@ -23,8 +23,24 @@ export class BackendService {
   addUser(u:User):Observable<User>{
     return this.http.post<User>(`${this.url}/api/User`, u)
   }
+
   deleteItem(i: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/api/Item/${i}`);
-}
+  }
+
+  uploadImage(formData: FormData): Observable<any> {
+    const imgurUrl = 'https://api.imgur.com/3/image';
+    const clientId = this.getImgurClientId();
+    
+    return this.http.post<any>(imgurUrl, formData, {
+      headers: {
+        Authorization: `Client-ID ${clientId}`
+      }
+    });
+  }
+
+  getImgurClientId(): Observable<any> {
+    return this.http.get<any>(`${this.url}/api/Imgur/client-id`);
+  }
 
 }
