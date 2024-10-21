@@ -1,0 +1,64 @@
+<h1>{{ googleUser.userName }} is giving away</h1>
+<p>Item name: <input type="text" [(ngModel)]="formItem.name" /></p>
+<p>
+  Item description: <input type="text" [(ngModel)]="formItem.description" />
+</p>
+
+<p>
+  Category:
+  <select [(ngModel)]="selectedCategory">
+    @for(c of category; track $index){
+    <option [value]="c.label">{{ c.label }}</option>
+    }
+  </select>
+</p>
+<p>
+  Condition: @if(selectedCategory === "Food"){
+  <select [(ngModel)]="foodCondition">
+    @for(c of foodCondition; track $index){
+    <option [value]="c.label">{{ c.label }}</option>
+    }
+  </select>
+  } @else if(selectedCategory === "Services") {
+  <select [(ngModel)]="selectedCondition" [disabled]="true"></select>
+  } @else{
+  <select [(ngModel)]="selectedCondition">
+    @for(c of condition; track $index){
+    <option [value]="c.label">{{ c.label }}</option>
+    }
+  </select>
+  }
+
+  <input type="file" class="file-input" />
+  <button (click)="addItem()">Add</button>
+</p>
+
+
+<p>Location: <input type="text" [(ngModel)]="formItem.geoCode" /></p>
+<p> Ex: 13700 Middlebelt Rd, Livonia, MI</p>
+<button (click)="getCoordinates()">Get Lat/long</button>
+  @if(lat&&long){
+<p>Latitude:{{lat}}</p>
+<p>Longitude:{{long}}</p>
+  }
+  
+
+<h1>Free Items</h1>
+@for(i of allItems; track i.id){
+<img [src]="i.pic" />
+<p>{{ i.name }}</p>
+<p>{{ i.description }}</p>
+<p>{{ i.condition }}</p>
+
+<button (click)="openLocation(i.geoCode)" type="button">
+  Location
+</button> 
+ @if(i.googleId === googleUser.googleId){
+  <button (click)="deleteItem(i.id)">Delete</button> 
+ }
+
+@if(i.google != null){
+  <p>Posted by {{ i.google.userName }}</p>
+  }
+ 
+}
