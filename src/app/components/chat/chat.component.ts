@@ -45,9 +45,9 @@ leaveChat(){
   this.chatService.leaveChat()
   .then(()=>{
 this.router.navigate(['']);
-setTimeout(()=>{
-  location.reload();
-},0);
+// setTimeout(()=>{
+//   location.reload();
+// },0);
   }).catch((e)=>{
     console.log(e);
   })
