@@ -2,6 +2,7 @@
 @if(newItem == false){
 <button class="Success" (click)="toggleFormDisplay()" >Donate an Item</button>
 }
+@else{
 <div>
   <p>Item name: <input type="text" [(ngModel)]="formItem.name" /></p>
   <p>
@@ -40,8 +41,7 @@
   <button (click)="uploadImageAndAddItem()">Add Item</button>
   }
 </div>
-
-
+}
 
 <!-- Sort dropdown menu -->
 <p>

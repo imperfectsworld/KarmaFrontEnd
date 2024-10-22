@@ -1,0 +1,43 @@
+@if(newItem == false){
+    <button class="Success" (click)="toggleFormDisplay()" >Donate an Item</button>
+    }
+    @else{
+    <div>
+      <p>Item name: <input type="text" [(ngModel)]="formItem.name" /></p>
+      <p>
+        Item description: <input type="text" [(ngModel)]="formItem.description" />
+      </p>
+    
+      <p>
+        Category:
+        <select [(ngModel)]="selectedCategory">
+          @for(c of category; track $index){
+          <option [value]="c.label">{{ c.label }}</option>
+          }
+        </select>
+      </p>
+      <p>
+        Condition: @if(selectedCategory === "Food"){
+        <select [(ngModel)]="foodCondition">
+          @for(c of foodCondition; track $index){
+          <option [value]="c.label">{{ c.label }}</option>
+          }
+        </select>
+        } @else if(selectedCategory === "Services") {
+        <select [(ngModel)]="selectedCondition" [disabled]="true"></select>
+        } @else{
+        <select [(ngModel)]="selectedCondition">
+          @for(c of condition; track $index){
+          <option [value]="c.label">{{ c.label }}</option>
+          }
+        </select>
+        }
+      </p>
+      <p>Location: <input type="text" [(ngModel)]="formItem.geoCode" /></p>
+      <p> Ex: 13700 Middlebelt Rd, Livonia, MI</p>
+      <input type="file" (change)="onFileSelected($event)" class="file-input" />
+      @if(selectedFile){
+      <button (click)="uploadImageAndAddItem()">Add Item</button>
+      }
+    </div>
+    }
