@@ -1,4 +1,4 @@
-<div clss ="container">
+<div class ="container">
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -18,11 +18,23 @@
           <li class="nav-item">
             <a class="nav-link" href="#" (click)="navigateToJoinRoom()">Chat Room</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link">
+              <span>Signin with:</span>
+              <asl-google-signin-button class="signin-button">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Sign-In" width="20" height="20" class="google-logo">
+              </asl-google-signin-button>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a> <span>Signin with:</span><asl-google-signin-button class="signin-button"></asl-google-signin-button> </a>
             <!-- <a class="nav-link" href="#" tabindex="-1" (click)="loginWithGoogle()">Login</a>
             <a class="nav-link" href="#" tabindex="-1"><asl-google-signin-button></asl-google-signin-button></a> -->
           </li>
+
+
         </ul>
       </div>
     </div>
