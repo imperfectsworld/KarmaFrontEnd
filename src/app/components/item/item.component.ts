@@ -23,7 +23,7 @@ export class ItemComponent {
   
   constructor(private backendService: BackendService, private socialAuthServiceConfig: SocialAuthService, private userComponent: UserComponent,private getlocationservice:GetlocationService){}
   @Input() googleUser: User = {} as User;
-
+  newItem: boolean = false;
   
   allItems: Item[] = [];
   userProfile: User = {} as User;
@@ -260,4 +260,10 @@ deleteItem(itemId: number): void {
     this.getAll();  
   });
 }
+
+toggleFormDisplay(){
+  this.newItem = !this.newItem;
+}
+
+
 }
