@@ -68,7 +68,24 @@
   </select>
 </p>
 
-
+<!-- Category filter -->
+ <p>
+Filter by Category:
+<select [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)">
+  <option value="">All Categories</option>
+  <option value="Food">Food</option>
+  <option value="Furniture">Furniture</option>
+  <option value="Car Seats">Car Seats</option>
+  <option value="Electronics">Electronics</option>
+  <option value="Clothing">Clothing</option>
+  <option value="Stroller">Stroller</option>
+  <option value="Nursing & Feeding">Nursing & Feeding</option>
+  <option value="Playards">Playards</option>
+  <option value="Bassinets">Bassinets</option>
+  <option value="Infant Activity">Infant Activity</option>
+  <option value="Infant Toys">Infant Toys</option>
+</select>
+</p>
 
 <h1>Free Items</h1>
 @for(i of filteredItems; track i.id){  <!-- MADE THIS filtered items instead-->
