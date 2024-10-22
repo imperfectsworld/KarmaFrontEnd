@@ -5,10 +5,11 @@
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Enter your name" formControlName="user" required>
             <input type="text" class="form-control" placeholder="Enter Community" formControlName="room" required>
-            <button [disabled]="joinRoomForm.invalid"  type="submit" routerLink="/chat">Join</button>
+            <button [disabled]="joinRoomForm.invalid"  type="submit" >Join</button>
            
           </div>
         </form>
+        <button (click)="leaveChat()">Back</button>
       </div>
     </div>
   </div>

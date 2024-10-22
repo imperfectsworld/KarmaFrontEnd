@@ -1,5 +1,5 @@
 import { AfterViewChecked, Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterLink],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
@@ -20,7 +20,7 @@ export class ChatComponent implements AfterViewChecked{
 constructor(public chatService:ChatService,public router:Router){
 }
 
-onInInit():void{
+ngOnInit():void{
 this.chatService.messages$.subscribe(response =>{
   this.messages = response;
   console.log(this.messages);
@@ -44,10 +44,10 @@ sendMessage(){
 leaveChat(){
   this.chatService.leaveChat()
   .then(()=>{
-this.router.navigate(['']);
-// setTimeout(()=>{
-//   location.reload();
-// },0);
+    this.router.navigate(['/user']);
+setTimeout(()=>{
+  location.reload();
+},0);
   }).catch((e)=>{
     console.log(e);
   })

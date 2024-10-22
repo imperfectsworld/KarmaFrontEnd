@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
 import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-join-room',
   standalone: true,
-  imports: [ReactiveFormsModule,ChatComponent],
+  imports: [ReactiveFormsModule,ChatComponent,RouterLink],
   templateUrl: './join-room.component.html',
   styleUrl: './join-room.component.css'
 })
@@ -33,11 +33,22 @@ isvalid:boolean = false;
    this.chatService.joinRoom(user,room)
    .then(() =>{
     this.isvalid = true;
-    
     this.router.navigate(['chat']);
    }).catch((e) =>{
     console.log('Error in joining the room',e);
    })
    
+  }
+  leaveChat(){
+    this.chatService.leaveChat()
+  
+    .then(()=>{
+      this.router.navigate(['/user']);
+  setTimeout(()=>{
+    location.reload();
+  },0);
+    }).catch((e)=>{
+      console.log(e);
+    });
   }
 }
