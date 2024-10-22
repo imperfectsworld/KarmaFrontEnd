@@ -1,6 +1,15 @@
+<div class="container">
+  
+ 
 <h1>Welcome {{ googleUser.userName }}!</h1>
-<button class="Success" (click)="toggleFormDisplay()" >Donate an Item</button>
-@if(newItem == true){
+@if (googleUser.googleId != null) {
+  <button class="btn btn-success" (click)="toggleFormDisplay()" >Donate an Item</button>
+}
+
+@if(newItem){
+  <div  id="testing"style="--bs-bg-opacity: .5;" class="bg-dark position-fixed top-0 start-0 bottom-0 end-0">
+    <div  style="background-color: #ffffff; width: 300px; padding: 10px;" class="rounded p-3 border border-black position-fixed top-50 start-50 translate-middle">
+        <div class="row">
   <div>
     <p>Item name: <input type="text" [(ngModel)]="formItem.name" /></p>
     <p>
@@ -38,6 +47,10 @@
     @if(selectedFile){
     <button (click)="uploadImageAndAddItem()">Add Item</button>
     }
+    <button class="Success" (click)="toggleFormDisplay()" >Close</button>
+  </div>
+  </div>
+  </div>
   </div>
  
 }
@@ -112,3 +125,4 @@ Filter by Category:
   }
  
 }
+</div>

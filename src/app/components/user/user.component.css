@@ -1,0 +1,13 @@
+.nav-link {
+  text-decoration: none;
+}
+.signin-button {
+  display: inline-block;
+  width: auto; /* Adjust width if necessary */
+  height: auto;
+  padding: 0;
+  margin-left: 5px; /* Adjust the spacing between "Login" and the button */
+  border: none;
+  background: none;
+  vertical-align: baseline; /* Align with the text */
+}

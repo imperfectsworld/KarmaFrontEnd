@@ -29,7 +29,7 @@ export class UserComponent {
     this.socialAuthServiceConfig.authState.subscribe((userResponse: SocialUser) => {
       this.googleUser = userResponse;
       this.loggedIn = (userResponse != null);
-      if(this.loggedIn == true){
+      if(this.loggedIn){
         this.user = {
           googleId: this.googleUser.id,
           userName: this.googleUser.name,
@@ -39,6 +39,13 @@ export class UserComponent {
       }
     })
   }
+  // loginWithGoogle(): void {
+  //   this.socialAuthServiceConfig.signIn('google').then(user => {
+  //     console.log("User logged in:", user);
+  //   }).catch(error => {
+  //     console.error("Login failed:", error);
+  //   });
+  // }
   signOut(): void{
     this.socialAuthServiceConfig.signOut()
     location.reload();
@@ -47,5 +54,6 @@ export class UserComponent {
   navigateToJoinRoom() {
     this.router.navigate(['/join-room']);
   }
+
 
 }
