@@ -35,6 +35,10 @@ export class ItemComponent {
   selectedCategory: string = "";
 
   imageUrl: string | null = null;
+
+  filteredItems: Item[] = []; // Filter variable
+  sortBy: string = 'alphabetical';  //This holds which sort we will use
+ 
   
   category = [
     {value: "option1", label: "Food"},
@@ -82,6 +86,7 @@ export class ItemComponent {
     this.backendService.getAllItems().subscribe(response=> {
       console.log(response);
       this.allItems = response;
+      this.filterItems(); //after all the items are returned call this function to filter and sort them
     });
   }
 
@@ -170,6 +175,59 @@ uploadImage(imageFile: File) {
     console.log('Image uploaded successfully:', response);
   });
 }
+
+ // Sort Method
+ sortItems() {
+  if (this.sortBy === 'alphabetical') {
+    this.filteredItems.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (this.sortBy === 'time') {
+    // Since we dont have access to date when an item is posted im basing most recent sort by the items ID, the 
+    //higher the ID the most recent the item was posted
+    this.filteredItems.sort((a, b) => b.id - a.id);
+  }
+}
+
+
+
+  //Filters items based on category and condition
+ filterItems() {
+   this.filteredItems = this.allItems.filter(item => {
+     const categoryMatches = this.selectedCategory ? item.categories === this.selectedCategory : true;
+     const conditionMatches = this.selectedCondition ? item.condition === this.selectedCondition : true;
+     return categoryMatches && conditionMatches;
+  });
+   this.sortItems(); // Sort after filtering
+ }
+
+
+  // Option to handle changes in sort or filter
+ onSortChange(event: Event): void {
+  const selectElement = event.target as HTMLSelectElement; // Safely cast event.target to HTMLSelectElement
+  const selectedValue = selectElement.value;
+
+  if (selectedValue === 'alphabetical') {
+    this.filteredItems.sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
+  } else if (selectedValue === 'time') {
+    // Sort by id as a proxy for time posted
+    this.filteredItems.sort((a, b) => {
+      return a.id - b.id; // Ensure 'id' is a number
+    });
+  }
+}
+
+  onCategoryChange(category: string) {
+    this.selectedCategory = category;
+    this.filterItems(); // Refetchs the items based on the new category
+  }
+
+  onConditionChange(condition: string) {
+    this.selectedCondition = condition;
+    this.filterItems(); // Refetchs the items based on the new condition
+  }
 
 
 

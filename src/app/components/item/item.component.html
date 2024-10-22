@@ -42,10 +42,38 @@
 
   
 
+
+
+<!-- Sort dropdown menu -->
+<p>
+  Sort by:
+  <select (change)="onSortChange($event)">
+    <option value="alphabetical">Alphabetical</option>
+    <option value="time">Time Posted</option>
+  </select>
+</p>
+
+<!-- Condition filter -->
+<p>
+  Condition:
+  <select [(ngModel)]="selectedCondition" (change)="onConditionChange(selectedCondition)">
+    <option value="">All Conditions</option>
+    <option value="Mint">Mint</option>
+    <option value="Like New">Like New</option>
+    <option value="Used">Used</option>
+    <option value="Worn">Worn</option>
+    <option value="Broken">Broken</option>
+
+    
+  </select>
+</p>
+
+
+
 <h1>Free Items</h1>
-@for(i of allItems; track i.id){
+@for(i of filteredItems; track i.id){  <!-- MADE THIS filtered items instead-->
   @if(i.pic){
-  <img [src]="i.pic" alt="Item image"/>
+    <img [src]="i.pic" alt="Item image" style="width: 150px; height: 150px;" />
   }
 <p>{{ i.name }}</p>
 <p>{{ i.description }}</p>
