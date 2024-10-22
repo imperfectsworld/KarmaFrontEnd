@@ -48,8 +48,11 @@
 <p>
   Sort by:
   <select (change)="onSortChange($event)">
-    <option value="alphabetical">Alphabetical</option>
-    <option value="time">Time Posted</option>
+    <option value="" disabled selected>Select sorting option</option>
+    <option value="newest">Most Recent</option>
+    <option value="oldest">Oldest</option>
+    <option value="alphabetical">A-Z</option>
+    <option value="reverseAlphabetical">Z-A</option>
   </select>
 </p>
 

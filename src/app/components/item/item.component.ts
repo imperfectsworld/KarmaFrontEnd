@@ -205,16 +205,35 @@ uploadImage(imageFile: File) {
   const selectElement = event.target as HTMLSelectElement; // Safely cast event.target to HTMLSelectElement
   const selectedValue = selectElement.value;
 
+  if (!selectedValue) {
+    // If no valid option is selected, do nothing or reset the sorting
+    return;
+  }
+
   if (selectedValue === 'alphabetical') {
     this.filteredItems.sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
-      return 0;
+      const nameA = a.name || ''; // Fallback to empty string if null
+      const nameB = b.name || ''; // Fallback to empty string if null
+      return nameA.localeCompare(nameB);
     });
-  } else if (selectedValue === 'time') {
+  } 
+  else if (selectedValue === 'reverseAlphabetical'){
+    this.filteredItems.sort((a, b) => {
+      const nameA = a.name || ''; // Fallback to empty string if null
+      const nameB = b.name || ''; // Fallback to empty string if null
+      return nameB.localeCompare(nameA);
+    });
+  }
+  else if (selectedValue === 'oldest') {
     // Sort by id as a proxy for time posted
     this.filteredItems.sort((a, b) => {
       return a.id - b.id; // Ensure 'id' is a number
+    });
+  }
+  else if (selectedValue === 'newest') {
+    // Sort by id as a proxy for time posted
+    this.filteredItems.sort((a, b) => {
+      return b.id - a.id; // Ensure 'id' is a number
     });
   }
 }
