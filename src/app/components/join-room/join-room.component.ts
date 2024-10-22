@@ -22,6 +22,9 @@ isvalid:boolean = false;
       user: ['', Validators.required],
       room: ['', Validators.required]
     });
+
+    //may cause issues
+    this.chatService.start();
   }
 
   // Function to handle form submission
