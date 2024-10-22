@@ -46,6 +46,8 @@ isvalid:boolean = false;
     this.chatService.leaveChat()
   
     .then(()=>{
+      this.chatService.users = [];
+      this.chatService.messages=[];
       this.router.navigate(['/user']);
   // setTimeout(()=>{
   //   location.reload();
