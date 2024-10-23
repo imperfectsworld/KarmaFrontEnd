@@ -1,7 +1,27 @@
 .xl {
-    padding: 10px 20px;
+    
     font-size: 20px;
     border-radius: 10px;
     width: 45%;
-    margin: 15px;
+    margin-right: 35px;  
+}
+
+.Guest {
+    background-color: #322651;
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+.Login {
+    background-color: #fd254c;
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+.FullLogo {
+    width: 40em;
+}
+
+.full-page {
+    height: 100vh; /* Full height of the viewport */
 }
