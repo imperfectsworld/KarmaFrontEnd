@@ -62,5 +62,8 @@ export class NavbarComponent {
   navigateToHome() {
     this.router.navigate(['/home']);
   }
+  navigateToGive() {
+    this.router.navigate(['/user']);
+  }
 
 }

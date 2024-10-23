@@ -1,16 +1,32 @@
-<div class="container">
+
+  <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form [formGroup]="joinRoomForm"  (ngSubmit)="joinRoom()">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter your name" formControlName="user" required>
-            <input type="text" class="form-control" placeholder="Enter Community" formControlName="room" required>
-            <button [disabled]="joinRoomForm.invalid"  type="submit" >Join</button>
-           
+        <form [formGroup]="joinRoomForm" (ngSubmit)="joinRoom()">
+          <!-- User input -->
+          <div class="form-group mb-3">
+            <label for="user">Enter your name</label>
+            <input type="text" id="user" class="form-control" placeholder="Enter your name" formControlName="user" required>
           </div>
-        </form>
-        <button (click)="leaveChat()">Back</button>
-      </div>
+  
+          <!-- Room input -->
+          <div class="form-group mb-3">
+            <label for="room">Enter Community</label>
+            <input type="text" id="room" class="form-control" placeholder="Enter Community" formControlName="room" required>
+          </div>
+  
+          <!-- Join Button -->
+          <div class="row justify-content-center">
+            <div class="button-group d-flex justify-content-center">
+                     
+          <button class="Guest xl btn btn-secondary me-4" (click)="leaveChat()">Back</button>
+          <button [disabled]="joinRoomForm.invalid" class="Login xl btn btn-primary btn-block" type="submit">Join</button>
+        </div></div>
+      </form>
+    
     </div>
   </div>
+  
+
+
   
