@@ -110,8 +110,10 @@ export class ItemComponent {
       console.log(response);
       this.getAll();
       this.formItem = {} as Item;
+   
     });
   });
+ this.toggleFormDisplay();
 }
 
 uploadImageAndAddItem() {
@@ -142,6 +144,7 @@ uploadImageAndAddItem() {
     };
 
     this.backendService.uploadImage(formData).subscribe(observer);
+    this.getAll();
   } 
   else {
     console.warn('No file selected for upload.');

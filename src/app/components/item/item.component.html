@@ -1,59 +1,71 @@
 <div class="container">
   
  
-<h1>Welcome {{ googleUser.userName }}!</h1>
-@if (googleUser.googleId != null) {
-  <button class="btn btn-success" (click)="toggleFormDisplay()" >Donate an Item</button>
-}
+  @if (googleUser.googleId != null) {
+    <h1>Welcome {{ googleUser.userName }}!</h1>
+    <button class="btn btn-success" (click)="toggleFormDisplay()" >Donate an Item</button>
+  }
+  @else {
+    <h1>Welcome!</h1>
+  }
 
 @if(newItem){
-  <div  id="testing"style="--bs-bg-opacity: .5;" class="bg-dark position-fixed top-0 start-0 bottom-0 end-0">
-    <div  style="background-color: #ffffff; width: 300px; padding: 10px;" class="rounded p-3 border border-black position-fixed top-50 start-50 translate-middle">
-        <div class="row">
-  <div>
-    <p>Item name: <input type="text" [(ngModel)]="formItem.name" /></p>
-    <p>
-      Item description: <input type="text" [(ngModel)]="formItem.description" />
-    </p>
+  <div  id="testing"style="--bs-bg-opacity: .5; z-index: 1050;" class="bg-dark position-fixed top-0 start-0 bottom-0 end-0">
+    <div class="bg-light rounded p-4 border border-dark position-fixed top-50 start-50 translate-middle" style="width: 400px;">
+      <h5 class="text-center mb-3">Add New Item</h5>
+      <div class="mb-3">
+        <label for="itemName" class="form-label">Item Name:</label>
+        <input type="text" id="itemName" class="form-control" [(ngModel)]="formItem.name" />
+      </div>
+      <div class="mb-3">
+        <label for="itemDescription" class="form-label">Item Description:</label>
+        <input type="text" id="itemDescription" class="form-control" [(ngModel)]="formItem.description" />
+      </div>
   
-    <p>
-      Category:
-      <select [(ngModel)]="selectedCategory">
-        @for(c of category; track $index){
-        <option [value]="c.label">{{ c.label }}</option>
-        }
-      </select>
-    </p>
-    <p>
-      Condition: @if(selectedCategory === "Food"){
-      <select [(ngModel)]="foodCondition">
-        @for(c of foodCondition; track $index){
-        <option [value]="c.label">{{ c.label }}</option>
-        }
-      </select>
-      } @else if(selectedCategory === "Services") {
-      <select [(ngModel)]="selectedCondition" [disabled]="true"></select>
+      <div class="mb-3">
+        <label for="categorySelect" class="form-label">Category:</label>
+        <select id="categorySelect" class="form-select" [(ngModel)]="selectedCategory">
+          @for(c of category; track $index) {
+            <option [value]="c.label">{{ c.label }}</option>
+          }
+        </select>
+      </div>
+        <div class="mb-3">
+          <label for="conditionSelect" class="form-label">Condition:</label>
+          @if(selectedCategory === "Food") {
+            <select id="conditionSelect" class="form-select" [(ngModel)]="foodCondition">
+              @for(c of foodCondition; track $index) {
+                <option [value]="c.label">{{ c.label }}</option>
+              }
+            </select>
+      }  @else if(selectedCategory === "Services") {
+        <select id="conditionSelect" class="form-select" [(ngModel)]="selectedCondition" disabled>
+          <option value="" disabled selected>Select condition</option>
+        </select>
       } @else{
-      <select [(ngModel)]="selectedCondition">
-        @for(c of condition; track $index){
-        <option [value]="c.label">{{ c.label }}</option>
-        }
-      </select>
+        <select id="conditionSelect" class="form-select" [(ngModel)]="selectedCondition">
+          @for(c of condition; track $index) {
+            <option [value]="c.label">{{ c.label }}</option>
+          }
+        </select>
       }
-    </p>
-    <p>Location: <input type="text" [(ngModel)]="formItem.geoCode" /></p>
+      <div class="mb-3">
+    <p>Location: <input type="text" class="form-control" [(ngModel)]="formItem.geoCode" /></p>
     <p> Ex: 13700 Middlebelt Rd, Livonia, MI</p>
+      </div>
     <input type="file" (change)="onFileSelected($event)" class="file-input" />
+    <div class="text-center">
     @if(selectedFile){
-    <button (click)="uploadImageAndAddItem()">Add Item</button>
+    <button (click)="uploadImageAndAddItem()">Submit</button>
     }
-    <button class="Success" (click)="toggleFormDisplay()" >Close</button>
+    <button class="--bs--success" (click)="toggleFormDisplay()" >Back</button>
   </div>
   </div>
   </div>
   </div>
- 
 }
+
+
 
 <div class="row">
   <!-- Sort by -->
@@ -112,7 +124,7 @@
         <div class="col-md-4 mb-4" >
     <div class="card" style="width: 300px; height: 620px;">
       @if(i.pic){
-        <img [src]="i.pic" alt="Item image" class="card-img-top"style="width: 280px; height: 250px; object-fit: cover;" />
+        <img [src]="i.pic" alt="Item image" class="card-img-top img-thumbnail"style="width: 100%; height: 250px; object-fit: cover;" />
       }
       
       <div class="card-body">
@@ -141,7 +153,4 @@
   }
 </div>
     
-
-
-
 </div>

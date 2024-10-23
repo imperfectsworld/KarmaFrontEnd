@@ -20,9 +20,14 @@
           </li>
 
                <li class="nav-item">
-            <a> <span>Signin with:</span><asl-google-signin-button class="signin-button"></asl-google-signin-button> </a>
-            <!-- <a class="nav-link" href="#" tabindex="-1" (click)="loginWithGoogle()">Login</a>
-            <a class="nav-link" href="#" tabindex="-1"><asl-google-signin-button></asl-google-signin-button></a> -->
+                @if(!loggedIn){
+                  <a> <span>Signin with:</span><asl-google-signin-button class="signin-button"></asl-google-signin-button> </a>
+                  
+                }
+                @else {
+                  <a class="nav-link" href="#" (click)="signOut()">Sign Out</a>
+                  
+                }
           </li>
 
 
@@ -36,7 +41,6 @@
   }
   @else {
     
-    <button class="btn btn-outline-dark" (click)="signOut()">Sign Out</button>
       <app-item [googleUser]="user"></app-item>
     }
 
