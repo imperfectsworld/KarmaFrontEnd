@@ -3,28 +3,26 @@
       <div class="navbar-brand" >
         <img src="/assets/WeeGiveBanner.png" alt="" width="280" height="75" class="d-inline-block align-text-top">
       </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+      
+      <ul class="nav justify-content-end" >
+        
           <li class="nav-item">
-            <a class="nav-link" style= "cursor: pointer;" aria-current="page" (click)="navigateToHome();closeNavbar()">Home</a>
+            <a class="nav-link" style= "cursor: pointer;" aria-current="page" (click)="navigateToHome()">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style= "cursor: pointer;" (click)="navigateToGive();closeNavbar()">Give</a>
+            <a class="nav-link" style= "cursor: pointer;" (click)="navigateToGive()">Give</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"style= "cursor: pointer;" (click)="navigateToJoinRoom();closeNavbar()">Chat Room</a>
+            <a class="nav-link"style= "cursor: pointer;" (click)="navigateToJoinRoom()">Chat Room</a>
           </li>
 
                <li class="nav-item">
                 @if(!loggedIn){
-                  <a style= "cursor: pointer;" (click)="closeNavbar()"> <span>Signin with:</span><asl-google-signin-button class="signin-button"  ></asl-google-signin-button> </a>
+                  <a style= "cursor: pointer;" > <span>Signin with:</span><asl-google-signin-button class="signin-button"  ></asl-google-signin-button> </a>
                   
                 }
                 @else {
-                  <a class="nav-link" style= "cursor: pointer;" (click)="signOut(); closeNavbar()">Sign Out</a>
+                  <a class="nav-link" style= "cursor: pointer;" (click)="signOut()">Sign Out</a>
                   
                 }
           </li>
@@ -32,5 +30,5 @@
 
         </ul>
       </div>
-    </div>
+    
   </nav>

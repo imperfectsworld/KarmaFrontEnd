@@ -45,20 +45,14 @@ export class NavbarComponent {
   // }
   signOut(): void{
     this.socialAuthServiceConfig.signOut()
-    location.reload();
+   
     this.user = {} as User;
+    this.router.navigate(['/home']);
   }
   navigateToJoinRoom() {
     this.router.navigate(['/join-room']);
   }
-  closeNavbar() {
-    const navbar = document.querySelector('.navbar-toggler');
-    const navbarCollapse = document.getElementById('navbarNav');
-    
-    if (navbar && navbarCollapse && navbarCollapse.classList.contains('show')) {
-      (navbar as HTMLElement).click();  // Trigger the toggle
-    }
-  }
+ 
   navigateToHome() {
     this.router.navigate(['/home']);
   }
