@@ -63,4 +63,8 @@ export class UserComponent {
     }
   }
 
+  navigateToHome() {
+    this.router.navigate(['/home']);
+  }
+
 }

@@ -12,8 +12,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="button-group d-flex justify-content-center">
-      <button class="Guest xl btn btn-secondary btn-lg">Guest</button>
-      <button class="Login xl btn btn-primary btn-lg">Login</button>
+      <button (click)="navigateToJoinRoom()" class="Guest xl btn btn-secondary btn-lg">Chat</button>
+      <button (click)="navigateToDonate()" routerLink="/user" class="Login xl btn btn-primary btn-lg">Donate</button>
     </div>
 
   </div>
