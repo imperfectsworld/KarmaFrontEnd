@@ -54,6 +54,13 @@ export class UserComponent {
   navigateToJoinRoom() {
     this.router.navigate(['/join-room']);
   }
-
+  closeNavbar() {
+    const navbar = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.getElementById('navbarNav');
+    
+    if (navbar && navbarCollapse && navbarCollapse.classList.contains('show')) {
+      (navbar as HTMLElement).click();  // Trigger the toggle
+    }
+  }
 
 }

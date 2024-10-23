@@ -1,19 +1,19 @@
 <div class ="container">
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <div class="navbar-brand" href="#">
         <img src="/assets/WeeGiveBanner.png" alt="" width="280" height="75" class="d-inline-block align-text-top">
-        </a>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="#"(click)="closeNavbar()">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Give</a>
+            <a class="nav-link" href="#"(click)="closeNavbar()">Give</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" (click)="navigateToJoinRoom()">Chat Room</a>
@@ -21,11 +21,11 @@
 
                <li class="nav-item">
                 @if(!loggedIn){
-                  <a> <span>Signin with:</span><asl-google-signin-button class="signin-button"></asl-google-signin-button> </a>
+                  <a (click)="closeNavbar()"> <span>Signin with:</span><asl-google-signin-button class="signin-button"  ></asl-google-signin-button> </a>
                   
                 }
                 @else {
-                  <a class="nav-link" href="#" (click)="signOut()">Sign Out</a>
+                  <a class="nav-link" href="#" (click)="signOut(); closeNavbar()">Sign Out</a>
                   
                 }
           </li>
@@ -35,6 +35,7 @@
       </div>
     </div>
   </nav>
+
   @if(!loggedIn){
     <!-- <asl-google-signin-button></asl-google-signin-button> -->
     <app-item></app-item>
