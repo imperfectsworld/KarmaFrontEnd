@@ -54,75 +54,94 @@
   </div>
  
 }
-@else{
 
-}
+<div class="row">
+  <!-- Sort by -->
+  <div class="col-md-4">
+    <p>
+      Sort by:
+      <select class="form-control" (change)="onSortChange($event)">
+        <option value="" disabled selected>Select sorting option</option>
+        <option value="newest">Most Recent</option>
+        <option value="oldest">Oldest</option>
+        <option value="alphabetical">A-Z</option>
+        <option value="reverseAlphabetical">Z-A</option>
+      </select>
+    </p>
+  </div>
 
-<!-- Sort dropdown menu -->
-<p>
-  Sort by:
-  <select (change)="onSortChange($event)">
-    <option value="" disabled selected>Select sorting option</option>
-    <option value="newest">Most Recent</option>
-    <option value="oldest">Oldest</option>
-    <option value="alphabetical">A-Z</option>
-    <option value="reverseAlphabetical">Z-A</option>
-  </select>
-</p>
+  <!-- Condition filter -->
+  <div class="col-md-4">
+    <p>
+      Condition:
+      <select class="form-control" [(ngModel)]="selectedCondition" (change)="onConditionChange(selectedCondition)">
+        <option value="">All Conditions</option>
+        <option value="Mint">Mint</option>
+        <option value="Like New">Like New</option>
+        <option value="Used">Used</option>
+        <option value="Worn">Worn</option>
+        <option value="Broken">Broken</option>
+      </select>
+    </p>
+  </div>
 
-<!-- Condition filter -->
-<p>
-  Condition:
-  <select [(ngModel)]="selectedCondition" (change)="onConditionChange(selectedCondition)">
-    <option value="">All Conditions</option>
-    <option value="Mint">Mint</option>
-    <option value="Like New">Like New</option>
-    <option value="Used">Used</option>
-    <option value="Worn">Worn</option>
-    <option value="Broken">Broken</option>
+  <!-- Category filter -->
+  <div class="col-md-4">
+    <p>
+      Filter by Category:
+      <select class="form-control" [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)">
+        <option value="">All Categories</option>
+        <option value="Food">Food</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Car Seats">Car Seats</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Stroller">Stroller</option>
+        <option value="Nursing & Feeding">Nursing & Feeding</option>
+        <option value="Playards">Playards</option>
+        <option value="Bassinets">Bassinets</option>
+        <option value="Infant Activity">Infant Activity</option>
+        <option value="Infant Toys">Infant Toys</option>
+      </select>
+    </p>
+  </div>
+</div>
+<div class="row border-bottom">
+    @for(i of filteredItems; track i.id){ 
+      
+        <div class="col-md-4 mb-4" >
+    <div class="card" style="width: 300px; height: 620px;">
+      @if(i.pic){
+        <img [src]="i.pic" alt="Item image" class="card-img-top"style="width: 280px; height: 250px; object-fit: cover;" />
+      }
+      
+      <div class="card-body">
+        <h5 class="card-title">{{ i.name }}</h5>
+        <p class="card-text">{{ i.description }}</p>
+        <p class="card-text"><strong>Condition:</strong> {{ i.condition }}</p>
+        <button (click)="openLocation(i.geoCode)" class="btn btn-primary mb-2 me-4">Location</button>
+        
+        <!-- Show delete button if the item's googleId matches -->
+        @if(i.googleId === googleUser.googleId){
+          <button (click)="deleteItem(i.id)"class="btn btn-danger mb-2">Delete</button> 
+         }
+        
+        <!-- Show posted by user if available -->
+        @if(i.google != null){
+          <div class="mt-2 d-flex align-items-center">
+            <!-- Google profile picture with rounded style -->
+            <img [src]="i.google.profilePic"  class="rounded-circle me-2" style="width: 40px; height: 40px;" />
+            <p class="mb-0">Posted by {{ i.google.userName }}</p>
+          </div>
+          }
+      </div>
+    </div>
+  </div>
 
+  }
+</div>
     
-  </select>
-</p>
 
-<!-- Category filter -->
- <p>
-Filter by Category:
-<select [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)">
-  <option value="">All Categories</option>
-  <option value="Food">Food</option>
-  <option value="Furniture">Furniture</option>
-  <option value="Car Seats">Car Seats</option>
-  <option value="Electronics">Electronics</option>
-  <option value="Clothing">Clothing</option>
-  <option value="Stroller">Stroller</option>
-  <option value="Nursing & Feeding">Nursing & Feeding</option>
-  <option value="Playards">Playards</option>
-  <option value="Bassinets">Bassinets</option>
-  <option value="Infant Activity">Infant Activity</option>
-  <option value="Infant Toys">Infant Toys</option>
-</select>
-</p>
 
-<h1>Free Items</h1>
-@for(i of filteredItems; track i.id){  <!-- MADE THIS filtered items instead-->
-  @if(i.pic){
-    <img [src]="i.pic" alt="Item image" style="width: 150px; height: 150px;" />
-  }
-<p>{{ i.name }}</p>
-<p>{{ i.description }}</p>
-<p>{{ i.condition }}</p>
 
-<button (click)="openLocation(i.geoCode)" type="button">
-  Location
-</button> 
- @if(i.googleId === googleUser.googleId){
-  <button (click)="deleteItem(i.id)">Delete</button> 
- }
-
-@if(i.google != null){
-  <p>Posted by {{ i.google.userName }}</p>
-  }
- 
-}
 </div>

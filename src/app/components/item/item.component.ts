@@ -8,11 +8,12 @@ import { ChatComponent } from '../chat/chat.component';
 import { UserComponent } from '../user/user.component';
 import { GetlocationService } from '../../services/getlocation.service';
 import { catchError, mergeMap, retryWhen, throwError, timer } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-item',
   standalone: true,
-  imports: [FormsModule, ChatComponent, UserComponent],
+  imports: [FormsModule, ChatComponent, UserComponent,CommonModule],
   templateUrl: './item.component.html',
   styleUrl: './item.component.css'
 })
