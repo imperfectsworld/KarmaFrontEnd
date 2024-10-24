@@ -1,28 +1,28 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
-      <div class="navbar-brand" >
-        <img src="/assets/WeeGiveBanner.png" alt="" width="280" height="75" class="d-inline-block align-text-top">
-      </div>
+      <a href="/" class="navbar-brand">
+        <img src="/assets/WeeGiveBanner.png" alt="WeeGive Banner" width="280" height="75" class="d-inline-block align-text-top">
+      </a>
       
       <ul class="nav justify-content-end" >
         
           <li class="nav-item">
-            <a class="nav-link" style= "cursor: pointer;" aria-current="page" (click)="navigateToHome()">Home</a>
+            <a class="nav-link" style= "color:#FD254C; font-weight: bold; cursor: pointer;" aria-current="page" (click)="navigateToHome()">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style= "cursor: pointer;" (click)="navigateToGive()">Donations</a>
+            <a class="nav-link" style= "color:#FD254C; font-weight: bold; cursor: pointer;" (click)="navigateToGive()">Donations</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"style= "cursor: pointer;" (click)="navigateToJoinRoom()">Chat Room</a>
+            <a class="nav-link"style= "color:#FD254C; font-weight: bold; cursor: pointer;" (click)="navigateToJoinRoom()">Chat Room</a>
           </li>
 
                <li class="nav-item">
                 @if(!loggedIn){
-                  <a style= "cursor: pointer;" > <span>Signin with:</span><asl-google-signin-button class="signin-button"  ></asl-google-signin-button> </a>
+                  <a style= "color:#FD254C; font-weight: bold; cursor: pointer;" > <span>Login:</span><asl-google-signin-button class="signin-button"  ></asl-google-signin-button> </a>
                   
                 }
                 @else {
-                  <a class="nav-link" style= "cursor: pointer;" (click)="signOut()">Sign Out</a>
+                  <a class="nav-link" style= "color:#FD254C; font-weight: bold; cursor: pointer;" (click)="signOut()">Sign Out</a>
                   
                 }
           </li>
