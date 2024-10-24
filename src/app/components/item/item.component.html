@@ -144,6 +144,13 @@
             <!-- Google profile picture with rounded style -->
             <img [src]="i.google.profilePic" class="rounded-circle me-2" style="width: 40px; height: 40px;" />
             <p class="mb-0">Posted by {{ i.google.userName }}</p>
+            <p>Contact:
+              <button class="fa fa-envelope" (click)="openEmail(i.google.email, i.google.userName, i.name)">
+              </button>
+            </p>
+            
+
+
           </div>
           }
         </div>

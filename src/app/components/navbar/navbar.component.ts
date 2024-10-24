@@ -30,7 +30,8 @@ export class NavbarComponent {
         this.user = {
           googleId: this.googleUser.id,
           userName: this.googleUser.name,
-          profilePic: this.googleUser.photoUrl
+          profilePic: this.googleUser.photoUrl,
+          email: this.googleUser.email
         };
         this.backendService.addUser(this.user).subscribe(response => {console.log(response)});
       }

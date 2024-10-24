@@ -280,4 +280,11 @@ export class ItemComponent {
     this.modalImageSrc = imageSrc;
     this.modalTitle = itemName;
   }
+
+  openEmail(email: string, name: string, item: string): void {
+    const subject = encodeURIComponent(`'Hello ${name} I Am Interested In Your Item: ${item}'`);
+    const body = encodeURIComponent(`'If you would like to discuss more about ${item} My phone number is:`);
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+    window.open(gmailLink, '_blank');
+  }
 }
