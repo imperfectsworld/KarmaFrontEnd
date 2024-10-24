@@ -1,9 +1,8 @@
-# WeeGive 
 ![weegive_720](https://github.com/user-attachments/assets/22a511a2-5f9b-4ff3-a7eb-0c88dd350f41)
 ![screenshot_2024-10-24_163812_720](https://github.com/user-attachments/assets/27376fa9-7984-4849-abbb-4f2d751b43ba)
 ![screenshot_2024-10-24_163827_720](https://github.com/user-attachments/assets/f63e2327-1a1d-46c5-bfe7-9ecb02b16ebc)
 ![screenshot_2024-10-24_163944_720](https://github.com/user-attachments/assets/514ef92e-a020-4e15-9a49-f79b9f95e5d0)
-
+# WeeGive 
 WeeGive is a platform that allows users to share gently used baby goods, fostering community engagement and reducing waste. Users can post items, inquire about available goods, and communicate through a chat feature to coordinate pickups and deliveries.
 
 ## Table of Contents
