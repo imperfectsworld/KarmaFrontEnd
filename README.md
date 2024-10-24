@@ -1,4 +1,6 @@
-# WeeGive
+# WeeGive 
+
+[WeeGive Website](https://green-sand-0fc2ba30f.5.azurestaticapps.net/home)
 
 WeeGive is a platform that allows users to share gently used baby goods, fostering community engagement and reducing waste. Users can post items, inquire about available goods, and communicate through a chat feature to coordinate pickups and deliveries.
 
@@ -9,11 +11,6 @@ WeeGive is a platform that allows users to share gently used baby goods, fosteri
 - [Backend](#backend)
 - [Technologies Used](#technologies-used)
 - [Deployment](#deployment)
-- [Getting Started](#getting-started)
-  - [Frontend Setup](#frontend-setup)
-  - [Backend Setup](#backend-setup)
-- [API Endpoints](#api-endpoints)
-- [Contributors](#contributors)
 
 ## Features
 
@@ -69,21 +66,3 @@ WeeGive is deployed using Azure services:
 - **Frontend**: Azure Static Web App
 - **Backend**: Azure App Service
 - **Database**: Azure SQL Server
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js
-- Angular CLI
-- .NET SDK
-- SQL Server
-- Azure account (for deployment)
-
-### Frontend Setup
-
-1. Navigate to the frontend directory.
-2. Install dependencies:
-
-   ```bash
-   npm install
