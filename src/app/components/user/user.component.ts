@@ -34,6 +34,7 @@ export class UserComponent {
           googleId: this.googleUser.id,
           userName: this.googleUser.name,
           profilePic: this.googleUser.photoUrl
+          
         };
         this.backendService.addUser(this.user).subscribe(response => {console.log(response)});
       }

@@ -3,7 +3,7 @@
 
   @if (googleUser.googleId != null) {
   <h1>Welcome {{ googleUser.userName }}!</h1>
-  <button class="btn btn-success" (click)="toggleFormDisplay()">Donate</button>
+  <button class="Donate btn btn-success" (click)="toggleFormDisplay()">Donate</button>
   }
   @else {
   <h1>Welcome!</h1>
@@ -18,6 +18,7 @@
       <div class="mb-3">
         <label for="itemName" class="form-label">Item Name:</label>
         <input type="text" id="itemName" class="form-control" [(ngModel)]="formItem.name" />
+        <p style="font-size: xx-small">Note: Item name will be used Chat Group name.</p>
       </div>
       <div class="mb-3">
         <label for="itemDescription" class="form-label">Item Description:</label>
@@ -54,7 +55,7 @@
           @if(selectedFile){
           <button (click)="uploadImageAndAddItem()">Submit</button>
           }
-          <button class="--bs--success" (click)="toggleFormDisplay()">Back</button>
+          <button class="btn btn-danger" (click)="toggleFormDisplay()">Back</button>
         </div>
       </div>
     </div>
@@ -128,12 +129,13 @@
         <div class="card-body">
           <h5 class="card-title">{{ i.name }}</h5>
           <p class="card-text">{{ i.description }}</p>
+          <p style="font-size: small;">For more info, go to Community Chat: {{i.name}}</p>
           <p class="card-text"><strong>Condition:</strong> {{ i.condition }}</p>
-          <button (click)="openLocation(i.geoCode)" class="btn btn-primary mb-2 me-4">Location</button>
+          <button (click)="openLocation(i.geoCode)" class="Location btn btn-primary mb-2 me-4">Location</button>
 
           <!-- Show delete button if the item's googleId matches -->
           @if(i.googleId === googleUser.googleId){
-          <button (click)="deleteItem(i.id)" class="btn btn-danger mb-2">Delete</button>
+          <button (click)="deleteItem(i.id)" class="fa fa-trash btn btn-danger mb-2"></button>
           }
 
           <!-- Show posted by user if available -->
