@@ -1,6 +1,6 @@
 # WeeGive 
 
-[WeeGive Website](https://green-sand-0fc2ba30f.5.azurestaticapps.net/home)
+[WeeGive Website](https://green-sand-0fc2ba30f.5.azurestaticapps.net/)
 
 WeeGive is a platform that allows users to share gently used baby goods, fostering community engagement and reducing waste. Users can post items, inquire about available goods, and communicate through a chat feature to coordinate pickups and deliveries.
 
