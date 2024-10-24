@@ -1,0 +1,36 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+  }
+  .about-section {
+    background-color: #fff;
+    padding: 60px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  .about-section h2 {
+    color: #322651;
+    font-weight: bold;
+  }
+  .about-section p {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  .mission-statement {
+    font-style: italic;
+    color: #fd254c;
+    margin-bottom: 30px;
+  }
+  .slogan {
+    color: #fd254c;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 40px;
+  }
+  .founders {
+    margin-top: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #322651;
+  }
