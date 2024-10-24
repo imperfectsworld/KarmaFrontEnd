@@ -1,27 +1,89 @@
-# KarmaFrontEnd
+# WeeGive
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+WeeGive is a platform that allows users to share gently used baby goods, fostering community engagement and reducing waste. Users can post items, inquire about available goods, and communicate through a chat feature to coordinate pickups and deliveries.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Features](#features)
+- [Frontend](#frontend)
+- [Backend](#backend)
+- [Technologies Used](#technologies-used)
+- [Deployment](#deployment)
+- [Getting Started](#getting-started)
+  - [Frontend Setup](#frontend-setup)
+  - [Backend Setup](#backend-setup)
+- [API Endpoints](#api-endpoints)
+- [Contributors](#contributors)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Post baby goods with images, descriptions, and location data.
+- Filter items by category and condition.
+- Google authentication for user login.
+- Real-time chat for users to communicate about items.
+- Location services to view item pickup locations via Google Maps.
 
-## Build
+## Frontend
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The frontend is built using Angular and Bootstrap, with the following core features:
 
-## Running unit tests
+- **Google Sign-In**: Integrates Google login for user authentication.
+- **Item Management**: Allows users to add, view, and delete baby goods, with filtering and sorting functionality.
+- **Image Upload**: Supports image uploads via Imgur API.
+- **Chat Functionality**: Real-time chat using SignalR for communication between users.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Frontend File Structure
 
-## Running end-to-end tests
+- **Main Entry Point**: `app.component.ts`
+- **Routing**: Configured using Routes, including paths for Home, Chat, Item, User, etc.
+- **Service Integration**: The frontend communicates with the backend API to handle items, locations, and chat through services like `BackendService` and `GetLocationService`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Backend
 
-## Further help
+The backend is built with C# and .NET, utilizing Entity Framework for database management. It serves as the API for handling users, items, and chat features.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Backend Features
+
+- **Database Integration**: Uses SQL Server for persistent storage of items, locations, and users.
+- **Image Handling**: Uploads and retrieves images via the Imgur API.
+- **Geolocation**: Retrieves geolocation data using Google Maps API.
+- **Real-time Chat**: Implements SignalR for real-time chat between users.
+
+### Key Services
+
+- **ImgurService**: Handles image uploads and retrievals from the Imgur API.
+- **LocationService**: Manages item location data using Google Maps.
+- **ChatService**: Facilitates real-time chat between users.
+
+## Technologies Used
+
+- **Frontend**: Angular, Bootstrap, SignalR, Google Maps API, Imgur API
+- **Backend**: .NET, C#, Entity Framework, SignalR, SQL Server
+- **Database**: SQL Server
+- **Authentication**: Google OAuth
+
+## Deployment
+
+WeeGive is deployed using Azure services:
+
+- **Frontend**: Azure Static Web App
+- **Backend**: Azure App Service
+- **Database**: Azure SQL Server
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- Angular CLI
+- .NET SDK
+- SQL Server
+- Azure account (for deployment)
+
+### Frontend Setup
+
+1. Navigate to the frontend directory.
+2. Install dependencies:
+
+   ```bash
+   npm install
