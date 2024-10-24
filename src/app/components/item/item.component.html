@@ -53,9 +53,9 @@
         <input type="file" (change)="onFileSelected($event)" class="file-input" />
         <div class="text-center">
           @if(selectedFile){
-          <button (click)="uploadImageAndAddItem()">Submit</button>
+          <button class="Donate btn btn-success" (click)="uploadImageAndAddItem()">Submit</button>
           }
-          <button class="btn btn-danger" (click)="toggleFormDisplay()">Back</button>
+          <button class="Location btn btn-danger" (click)="toggleFormDisplay()">Back</button>
         </div>
       </div>
     </div>
